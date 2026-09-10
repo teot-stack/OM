@@ -17,3 +17,10 @@ PWA personal para Android/Chromium. No requiere servidor ni cuenta: el estado di
 2. Hacer commit/push a `main`.
 3. Si GitHub Pages ya estaba activo, no hace falta reconfigurarlo.
 4. En Android, cerrar y volver a abrir la PWA. Si tarda en actualizar, abrir una vez la URL de GitHub Pages en Chrome y luego volver a abrir la aplicación instalada.
+
+
+## V3
+- Ilustraciones superiores recortadas para eliminar texto incrustado.
+- `object-fit: contain` en todas las tarjetas superiores: ninguna figura debe recortarse.
+- Columnas de texto e ilustración separadas sin gradientes superpuestos.
+- Cronómetros reajustados para proteger números y etiqueta dentro del anillo.

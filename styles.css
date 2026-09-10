@@ -132,3 +132,105 @@ button{color:inherit}
 .hero[data-practice="agni"] .hero-art img{transform:scale(1.12);transform-origin:center center}
 .hero[data-practice="saludos"] .hero-art img,
 .hero[data-practice="khechari"] .hero-art img{transform:none}
+
+
+/* V3: héroes sin superposición ni recorte. Las ilustraciones son secundarias y siempre caben completas. */
+.hero{
+  grid-template-columns:minmax(0,48%) minmax(0,52%);
+  column-gap:0;
+}
+.hero-copy{
+  padding:12px 12px 12px 16px;
+  overflow:hidden;
+  background:#edf9ff;
+}
+.hero-copy strong{
+  font-size:clamp(23px,6.2vw,34px);
+  line-height:1.02;
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
+  max-width:100%;
+}
+.hero-copy span{
+  font-size:clamp(15px,3.8vw,20px);
+  line-height:1.08;
+  max-width:100%;
+  overflow-wrap:normal;
+  word-break:normal;
+}
+.hero-art{
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:7px;
+}
+.hero-art:before{display:none}
+.hero-art img,
+.hero.object-contain .hero-art img,
+.hero[data-practice] .hero-art img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  transform:none !important;
+  padding:0;
+}
+.hero[data-practice="saludos"]{grid-template-columns:minmax(0,42%) minmax(0,58%)}
+.hero[data-practice="bhramari"]{grid-template-columns:minmax(0,50%) minmax(0,50%)}
+.hero[data-practice="khechari"]{grid-template-columns:minmax(0,44%) minmax(0,56%)}
+
+/* V3: cronómetro con zona útil protegida dentro del anillo. */
+.timer-face{
+  width:min(136px,34vw);
+  height:min(136px,34vw);
+  padding:20px 16px 16px;
+  overflow:visible;
+}
+.timer-face:before{inset:9px}
+.timer-value{
+  font-size:clamp(34px,9.2vw,42px);
+  line-height:1;
+  letter-spacing:-.035em;
+}
+.timer-label{
+  font-size:clamp(9px,2.35vw,11px);
+  line-height:1;
+  margin-top:5px;
+  padding:0 5px;
+}
+.timer-btn{font-size:clamp(17px,4.4vw,21px)}
+
+/* Evita que textos largos ocupen la columna de la ilustración. */
+.hero-copy, .hero-copy strong, .hero-copy span{min-width:0}
+
+@media(max-height:730px){
+  .hero{grid-template-columns:minmax(0,48%) minmax(0,52%)}
+  .hero[data-practice="saludos"]{grid-template-columns:minmax(0,42%) minmax(0,58%)}
+  .hero[data-practice="bhramari"]{grid-template-columns:minmax(0,50%) minmax(0,50%)}
+  .hero[data-practice="khechari"]{grid-template-columns:minmax(0,44%) minmax(0,56%)}
+  .hero-copy{padding:7px 8px 7px 11px}
+  .hero-copy strong{font-size:22px;line-height:1}
+  .hero-copy span{font-size:13.5px;line-height:1.03;margin-top:4px}
+  .hero-art{padding:5px}
+  .timer-face{width:112px;height:112px;padding:17px 13px 13px}
+  .timer-face:before{inset:8px}
+  .timer-value{font-size:33px;line-height:1}
+  .timer-label{font-size:8.5px;margin-top:3px}
+  .timer-btn{font-size:16px}
+}
+
+@media(max-width:380px){
+  .hero{grid-template-columns:minmax(0,49%) minmax(0,51%)}
+  .hero[data-practice="saludos"]{grid-template-columns:minmax(0,43%) minmax(0,57%)}
+  .hero[data-practice="bhramari"]{grid-template-columns:minmax(0,51%) minmax(0,49%)}
+  .hero[data-practice="khechari"]{grid-template-columns:minmax(0,45%) minmax(0,55%)}
+  .hero-copy{padding-left:10px;padding-right:8px}
+  .hero-copy strong{font-size:22px}
+  .hero-copy span{font-size:13.5px}
+  .timer-card{grid-template-columns:120px 1fr;padding:7px 8px;gap:7px}
+  .timer-face{width:112px;height:112px}
+  .timer-value{font-size:33px}
+  .timer-btn{font-size:16px;padding:0 5px}
+}
