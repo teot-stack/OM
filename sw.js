@@ -1,4 +1,4 @@
-const CACHE='practica-consciente-v1';
+const CACHE='practica-consciente-v2-layout';
 const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./assets/icons/icon-192.png','./assets/icons/icon-512.png',
 './assets/practices/om.png','./assets/practices/saludos.jpg','./assets/practices/bhramari.png','./assets/practices/kapalabhati.jpg','./assets/practices/solar.jpg','./assets/practices/moola.jpg','./assets/practices/vajroli.jpg','./assets/practices/ashwini.jpg','./assets/practices/agni.jpg','./assets/practices/khechari.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting()));});

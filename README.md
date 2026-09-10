@@ -1,30 +1,19 @@
 # Rutina de Práctica Consciente · PWA
 
-PWA estática, sin servidor backend y sin cuentas. Guarda el estado diario y los temporizadores en el almacenamiento local del dispositivo.
+PWA personal para Android/Chromium. No requiere servidor ni cuenta: el estado diario y los temporizadores se guardan localmente en el dispositivo.
 
-## Ejecutar en una computadora
+## V2 · ajustes de legibilidad
 
-Desde esta carpeta:
+- Texto de las instrucciones aumentado un 25% respecto de V1.
+- Tarjetas superiores reorganizadas en dos áreas independientes (texto + ilustración) para impedir superposiciones.
+- Cronómetros normalizados con el patrón Bhramari: anillo de progreso, hora centrada y etiqueta `Tiempo de práctica` dentro del círculo.
+- Botones `Iniciar/Pausar` y `Reiniciar` a la derecha del reloj.
+- Adaptación específica para pantallas Android de poca altura sin scroll en las fichas de práctica.
+- Caché PWA incrementada a V2 para forzar la actualización de CSS/JS al publicar la nueva versión.
 
-```bash
-python -m http.server 8080
-```
+## Publicación en GitHub Pages
 
-Abrir `http://localhost:8080` en Chrome/Chromium.
-
-## Instalar en Android
-
-La PWA debe publicarse por HTTPS (GitHub Pages, Netlify, Cloudflare Pages, etc.). Luego abrir la URL en Chrome y elegir **Instalar aplicación** / **Agregar a pantalla de inicio**.
-
-## Archivos principales
-
-- `index.html`: shell de la app.
-- `styles.css`: estética y tipografía.
-- `app.js`: prácticas, instrucciones, temporizadores, tildes e historial.
-- `manifest.webmanifest`: instalación PWA.
-- `sw.js`: funcionamiento offline.
-- `assets/practices/`: ilustraciones.
-
-## Editar una práctica
-
-En `app.js`, buscar el objeto dentro de `practices`. Los textos son HTML real, no forman parte de las imágenes. La tipografía preferida es **Roboto Condensed**; si no está disponible o no puede cargarse, se utiliza una alternativa condensada/sistema.
+1. Sustituir en el repositorio los archivos `index.html`, `styles.css`, `app.js`, `sw.js`, `manifest.webmanifest` y la carpeta `assets` por los de este paquete.
+2. Hacer commit/push a `main`.
+3. Si GitHub Pages ya estaba activo, no hace falta reconfigurarlo.
+4. En Android, cerrar y volver a abrir la PWA. Si tarda en actualizar, abrir una vez la URL de GitHub Pages en Chrome y luego volver a abrir la aplicación instalada.

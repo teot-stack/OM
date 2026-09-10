@@ -66,6 +66,7 @@ function getTimer(p){
 }
 function saveTimer(p,s){localStorage.setItem(timerKey(p.id),JSON.stringify(s));}
 function formatTime(sec){sec=Math.max(0,Math.floor(sec)); const m=Math.floor(sec/60); const s=sec%60; return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+function timerProgress(p,s){ if(!p.timer) return 0; if(p.timer.mode==='down'){const total=Math.max(1,p.timer.seconds); return Math.max(0,Math.min(100,((total-s.value)/total)*100));} return Math.max(0,Math.min(100,(s.value%600)/600*100)); }
 function resetTimer(p){const s=defaultTimer(p); saveTimer(p,s); render();}
 function toggleTimer(p){
   let s=getTimer(p);
@@ -77,6 +78,7 @@ function startTimerLoop(p){
   timerTick=setInterval(()=>{
     if(route.view!=='practice'||route.id!==p.id){clearInterval(timerTick);return;}
     let s=getTimer(p); const el=document.querySelector('.timer-value'); if(el) el.textContent=formatTime(s.value);
+    const face=document.querySelector('.timer-face'); if(face) face.style.setProperty('--progress',`${timerProgress(p,s)}%`);
     const b=document.querySelector('[data-timer-toggle]'); if(b) b.innerHTML=s.running?'❚❚&nbsp; Pausar':'▶&nbsp; Iniciar';
   },500);
 }
@@ -114,8 +116,8 @@ function practice(p){
   const done=isDone(p.id); const ts=p.timer?getTimer(p):null;
   app.innerHTML=`<main class="screen practice ${p.timer?'has-timer':''}">
     <header class="topbar"><button class="icon-btn" data-back aria-label="Volver">‹</button><h1>${p.title}</h1><button class="icon-btn" data-home aria-label="Inicio">⌂</button></header>
-    <section class="hero ${p.contain?'object-contain':''}"><img src="${p.img}" alt="Ilustración de ${p.title}" /><div class="hero-badge"><strong>${p.title}</strong><span>${p.subtitle}</span></div></section>
-    ${p.timer?`<section class="timer-card"><div class="timer-face"><div class="timer-value">${formatTime(ts.value)}</div><div class="timer-label">Tiempo de práctica</div></div><div class="timer-actions"><button class="timer-btn primary" data-timer-toggle>${ts.running?'❚❚  Pausar':'▶  Iniciar'}</button><button class="timer-btn secondary" data-timer-reset>↻  Reiniciar</button></div></section>`:''}
+    <section class="hero ${p.contain?'object-contain':''}" data-practice="${p.id}"><div class="hero-copy"><strong>${p.title}</strong><span>${p.subtitle}</span></div><div class="hero-art"><img src="${p.img}" alt="Ilustración de ${p.title}" /></div></section>
+    ${p.timer?`<section class="timer-card"><div class="timer-face" style="--progress:${timerProgress(p,ts)}%"><div class="timer-value">${formatTime(ts.value)}</div><div class="timer-label">Tiempo de práctica</div></div><div class="timer-actions"><button class="timer-btn primary" data-timer-toggle>${ts.running?'❚❚  Pausar':'▶  Iniciar'}</button><button class="timer-btn secondary" data-timer-reset>↻  Reiniciar</button></div></section>`:''}
     <section class="instructions"><h2>Instrucciones</h2><ol class="instruction-list">${p.instructions.map((x,i)=>`<li><span class="step">${i+1}</span><span>${x}</span></li>`).join('')}</ol></section>
     <label class="complete-row ${done?'checked':''}"><input type="checkbox" ${done?'checked':''} data-complete /><span class="checkbox-ui"></span><span>Marcar como realizada</span></label>
   </main>${nav()}`;

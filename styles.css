@@ -27,25 +27,32 @@ button{color:inherit}
 .topbar h1{margin:0;text-align:center;font-size:clamp(27px,7vw,38px);line-height:1;font-weight:700;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .icon-btn{width:46px;height:46px;border:0;background:transparent;border-radius:50%;display:grid;place-items:center;font-size:34px;font-weight:700;cursor:pointer}
 .icon-btn:active{background:#eaf5fd}
-.hero{border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#e8f7ff,#f8fcff);position:relative;min-height:0;border:1px solid #e2f2fb}
-.hero img{width:100%;height:100%;object-fit:cover;display:block}
-.hero.object-contain img{object-fit:contain;background:linear-gradient(135deg,#e8f7ff,#f8fcff)}
-.hero-badge{position:absolute;left:18px;top:18px;max-width:46%;padding:10px 14px;border-radius:15px;background:rgba(255,255,255,.86);backdrop-filter:blur(4px)}
-.hero-badge strong{display:block;font-size:clamp(26px,7vw,39px);line-height:.95;font-weight:700;letter-spacing:-.02em}
-.hero-badge span{display:block;margin-top:8px;font-size:clamp(16px,4.3vw,22px);line-height:1.05;font-weight:600;color:#3f74aa}
-.timer-card{border-radius:var(--radius);background:linear-gradient(135deg,#eaf8ff,#dff2ff);display:grid;grid-template-columns:1.05fr 1.15fr;align-items:center;padding:10px 14px;min-height:0;border:1px solid #d8edf9}
-.timer-face{width:min(125px,31vw);height:min(125px,31vw);border:9px solid #b9e0f7;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:auto;background:#fff}
-.timer-value{font-weight:700;font-size:clamp(38px,11vw,58px);line-height:.95;color:#001b60;font-variant-numeric:tabular-nums}
-.timer-label{font-size:clamp(11px,3vw,15px);font-weight:700;color:#4f7daa;text-transform:uppercase;margin-top:7px}
-.timer-actions{display:grid;gap:8px}
-.timer-btn{height:54px;border:0;border-radius:16px;font-weight:700;font-size:clamp(18px,5vw,24px);display:flex;gap:10px;align-items:center;justify-content:center;cursor:pointer}
+.hero{border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#e8f7ff,#f8fcff);position:relative;min-height:0;border:1px solid #e2f2fb;display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);isolation:isolate}
+.hero-copy{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:14px 6px 14px 18px;min-width:0;background:linear-gradient(90deg,rgba(232,247,255,.98) 0%,rgba(239,250,255,.96) 72%,rgba(239,250,255,.45) 100%)}
+.hero-copy strong{display:block;font-size:clamp(25px,6.7vw,37px);line-height:.96;font-weight:700;letter-spacing:-.025em;color:#08245f;overflow-wrap:anywhere}
+.hero-copy span{display:block;margin-top:8px;font-size:clamp(15px,4vw,21px);line-height:1.05;font-weight:600;color:#3f74aa}
+.hero-art{position:relative;z-index:1;min-width:0;height:100%;overflow:hidden;background:linear-gradient(135deg,#e8f7ff,#f8fcff)}
+.hero-art:before{content:"";position:absolute;left:0;top:0;bottom:0;width:20%;z-index:2;background:linear-gradient(90deg,rgba(239,250,255,.88),rgba(239,250,255,0));pointer-events:none}
+.hero-art img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero.object-contain .hero-art img{object-fit:cover;background:linear-gradient(135deg,#e8f7ff,#f8fcff)}
+.hero[data-practice="saludos"]{grid-template-columns:minmax(0,34%) minmax(0,66%)}
+.hero[data-practice="saludos"] .hero-copy strong{font-size:clamp(23px,6.1vw,34px)}
+.hero[data-practice="khechari"]{grid-template-columns:minmax(0,40%) minmax(0,60%)}
+.timer-card{border-radius:var(--radius);background:linear-gradient(135deg,#eaf8ff,#dff2ff);display:grid;grid-template-columns:minmax(150px,.95fr) minmax(150px,1.15fr);align-items:center;padding:10px 14px;min-height:0;border:1px solid #d8edf9;gap:10px}
+.timer-face{--progress:0%;width:min(142px,36vw);height:min(142px,36vw);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:auto;position:relative;background:conic-gradient(#43aaf1 var(--progress),#c8e7f8 0);padding:14px;text-align:center;overflow:hidden}
+.timer-face:before{content:"";position:absolute;inset:8px;border-radius:50%;background:#fff;z-index:0}
+.timer-value,.timer-label{position:relative;z-index:1;width:100%;text-align:center}
+.timer-value{font-weight:700;font-size:clamp(36px,10.2vw,46px);line-height:.9;color:#001b60;font-variant-numeric:tabular-nums;letter-spacing:-.045em;white-space:nowrap}
+.timer-label{font-size:clamp(10px,2.7vw,13px);line-height:1.05;font-weight:700;color:#4f7daa;text-transform:uppercase;margin-top:9px;padding:0 2px}
+.timer-actions{display:grid;gap:8px;min-width:0}
+.timer-btn{height:54px;border:0;border-radius:16px;font-weight:700;font-size:clamp(18px,4.8vw,23px);display:flex;gap:9px;align-items:center;justify-content:center;cursor:pointer;white-space:nowrap;padding:0 10px}
 .timer-btn.primary{background:linear-gradient(135deg,#2a9f9a,#37b3ad);color:#fff}
 .timer-btn.secondary{background:#d9ecfb;color:#0a245a}
 .instructions{border-radius:var(--radius);background:linear-gradient(135deg,#fff9eb,#fffcf4);padding:12px 16px 10px;min-height:0;overflow:hidden;border:1px solid #fff1d1;display:flex;flex-direction:column}
 .instructions h2{margin:0 0 8px;font-size:clamp(30px,7vw,42px);line-height:1;font-weight:700;letter-spacing:-.025em;color:#061f5c}
 .instruction-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;justify-content:space-evenly;flex:1;min-height:0;gap:3px}
-.instruction-list li{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center;font-size:clamp(18px,4.8vw,24px);line-height:1.05;font-weight:700;color:#071f58;min-height:0}
-.step{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:25px;font-weight:700;background:var(--blue)}
+.instruction-list li{display:grid;grid-template-columns:46px 1fr;gap:10px;align-items:center;font-size:clamp(22.5px,6vw,30px);line-height:1.02;font-weight:700;color:#071f58;min-height:0}
+.step{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:24px;font-weight:700;background:var(--blue)}
 .instruction-list li:nth-child(2) .step{background:var(--gold)}
 .instruction-list li:nth-child(3) .step{background:var(--teal)}
 .instruction-list li:nth-child(4) .step{background:var(--violet)}
@@ -98,9 +105,30 @@ button{color:inherit}
   .screen.practice{gap:7px;grid-template-rows:auto minmax(120px,.9fr) minmax(0,1.25fr) 52px}
   .screen.practice.has-timer{grid-template-rows:auto minmax(105px,.7fr) 120px minmax(0,1.15fr) 52px}
   .topbar{height:42px}.topbar h1{font-size:27px}.icon-btn{height:40px;width:40px}
-  .hero-badge{top:10px;left:10px;padding:8px 10px}.hero-badge strong{font-size:27px}.hero-badge span{font-size:15px;margin-top:4px}
-  .timer-card{padding:6px 10px}.timer-face{width:104px;height:104px;border-width:7px}.timer-value{font-size:40px}.timer-btn{height:45px;font-size:18px}
-  .instructions{padding:9px 12px 7px}.instructions h2{font-size:30px;margin-bottom:5px}.instruction-list li{font-size:17px;grid-template-columns:40px 1fr;gap:8px}.step{width:36px;height:36px;font-size:21px}
+  .hero-copy{padding:8px 4px 8px 12px}.hero-copy strong{font-size:24px}.hero-copy span{font-size:14px;margin-top:4px}
+  .timer-card{padding:6px 9px;grid-template-columns:minmax(122px,.9fr) minmax(135px,1.1fr)}.timer-face{width:118px;height:118px;padding:12px}.timer-face:before{inset:7px}.timer-value{font-size:36px}.timer-label{font-size:10px;margin-top:6px}.timer-btn{height:45px;font-size:17px}
+  .instructions{padding:8px 11px 7px}.instructions h2{font-size:30px;margin-bottom:4px}.instruction-list li{font-size:21.25px;line-height:1;grid-template-columns:38px 1fr;gap:8px}.step{width:35px;height:35px;font-size:20px}
   .complete-row{height:52px;font-size:20px}.checkbox-ui{width:34px;height:34px}
 }
+
+@media(max-width:380px){
+  .hero{grid-template-columns:minmax(0,44%) minmax(0,56%)}
+  .hero-copy{padding-left:12px}
+  .hero-copy strong{font-size:23px}
+  .hero-copy span{font-size:14px}
+  .timer-card{grid-template-columns:132px 1fr;padding:8px 9px;gap:8px}
+  .timer-face{width:124px;height:124px}
+  .timer-value{font-size:37px}
+  .timer-btn{font-size:17px;padding:0 6px}
+  .instruction-list li{font-size:22.5px}
+}
 @media(min-width:700px){.screen{max-width:520px;margin:auto}}
+
+/* Ajustes por práctica: encuadres que mantienen la figura lejos del bloque de texto. */
+.hero[data-practice="om"] .hero-art img,
+.hero[data-practice="bhramari"] .hero-art img,
+.hero[data-practice="vajroli"] .hero-art img,
+.hero[data-practice="ashwini"] .hero-art img,
+.hero[data-practice="agni"] .hero-art img{transform:scale(1.12);transform-origin:center center}
+.hero[data-practice="saludos"] .hero-art img,
+.hero[data-practice="khechari"] .hero-art img{transform:none}
